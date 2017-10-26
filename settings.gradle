@@ -1,1 +1,1 @@
-include ':mobile', ':device', ':socket', ':eq2'
+include ':mobile', ':device', ':socket', ':eq'

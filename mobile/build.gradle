@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
-        applicationId "com.jshipster.eq"
+        applicationId "com.jshipster.app.eq"
         minSdkVersion 22
         targetSdkVersion 26
         versionCode 1
@@ -27,4 +27,5 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
     compile project(path: ':socket')
+    compile project(path: ':eq')
 }

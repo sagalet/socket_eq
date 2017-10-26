@@ -17,6 +17,7 @@ import java.net.SocketException;
 import java.net.SocketTimeoutException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 public class SocketConnector {
 
@@ -50,6 +51,12 @@ public class SocketConnector {
                 switch(msg.what) {
                     case GET_CLIENT_SOCKET: {
                         Socket socket = (Socket) msg.obj;
+                        try {
+                            socket.shutdownOutput();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            return;
+                        }
                         String name = obtainName(socket);
                         InnerSocketHandler handler = new InnerSocketHandler(socket, name, mHandler);
                         mClients.put(name, new Pair<>(socket, handler));
@@ -97,6 +104,7 @@ public class SocketConnector {
                         try {
                             Socket socket = new Socket();
                             socket.connect(addr, 5000);
+                            socket.shutdownInput();
                             mRemotes.put(name, socket);
                             status = STATUS_CONNECTED;
                         } catch (SocketException e) {
@@ -196,6 +204,43 @@ public class SocketConnector {
         void onDataReceive(String from, SocketPackage p);
         void onClientStatusChanged(String client, int status);
         void onRemoteStatusChanged(String remote,int status);
+    }
+
+    public boolean isListening() {
+        if(mSocketListener != null) {
+            return mSocketListener.isStop();
+        }
+        return false;
+    }
+
+    public void release(){
+        if(isListening()) {
+            try {
+                stopListening();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(!mRemotes.isEmpty()) {
+            Set<String> set = mRemotes.keySet();
+            for(String s : set) {
+                Socket socket = mRemotes.remove(s);
+                try {
+                    socket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        if(!mClients.isEmpty()) {
+            Set<String> set = mClients.keySet();
+            for(String s : set) {
+                Pair<Socket, InnerSocketHandler> p = mClients.remove(s);
+                p.second.tryStop();
+            }
+        }
     }
 
     private String obtainName(String ip, int port) {

@@ -88,7 +88,7 @@ public class SocketPackage implements Serializable {
         return false;
     }
 
-    public boolean putRequest(String r) {
+    public boolean putRequest(JSONObject r) {
         if(r == null) {
             Log.e(TAG, "string is null");
             return false;
@@ -104,20 +104,10 @@ public class SocketPackage implements Serializable {
         return false;
     }
 
-    public String[] getRequest() {
+    public JSONObject[] getRequest() {
         if(checkObject()) {
             JSONArray array = tryGetArray("request");
-            if(array == null)
-                return null;
-            int size = array.length();
-            if(size != 0) {
-                String[] r = new String[size];
-                for(int i=0; i<size; i++) {
-                    r[i] = array.optString(i);
-                }
-                return r;
-            }
-            return null;
+            return toJSONObjectArray(array);
         }
         return null;
     }
@@ -141,17 +131,21 @@ public class SocketPackage implements Serializable {
     public JSONObject[] getResponse() {
         if(checkObject()) {
             JSONArray array = tryGetArray("response");
-            if(array == null)
-                return null;
-            int size = array.length();
-            if(size != 0) {
-                JSONObject[] r = new JSONObject[size];
-                for(int i=0; i<size; i++) {
-                    r[i] = array.optJSONObject(i);
-                }
-                return r;
-            }
+            return toJSONObjectArray(array);
+        }
+        return null;
+    }
+
+    private JSONObject[] toJSONObjectArray(JSONArray array) {
+        if(array == null)
             return null;
+        int size = array.length();
+        if(size != 0) {
+            JSONObject[] r = new JSONObject[size];
+            for(int i=0; i<size; i++) {
+                r[i] = array.optJSONObject(i);
+            }
+            return r;
         }
         return null;
     }

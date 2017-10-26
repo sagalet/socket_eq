@@ -113,11 +113,19 @@ public class UDPBroadcast {
     }
 
     public void setBlockIp(String ip) {
-        mBlockIp.add(ip);
+        if(!mBlockIp.contains(ip)) {
+            mBlockIp.add(ip);
+        }
     }
 
     public interface EventCallback {
         void onDataReceive(String ip, SocketPackage data);
+    }
+
+    public void release() {
+        if(isReceiverEnabled()) {
+            disableReceiver();
+        }
     }
 
     private class InnerReceiver extends StopableThread {
