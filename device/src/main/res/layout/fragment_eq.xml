@@ -3,67 +3,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Switch
-        android:id="@+id/swt_eq_enable"
+    <RelativeLayout
+        android:id="@+id/rly_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:text="@string/equalizer" />
+        android:layout_alignParentTop="true" >
+
+    <Switch
+        android:id="@+id/swt_eq_enable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Equalizer(on/off)"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/swt_eq_enable"
-        android:orientation="vertical">
-
-    <SeekBar
-        android:id="@+id/seekBar1"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:max="20"
-        android:progress="10" />
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:id="@+id/linearLayout">
 
-    <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="20"
-        android:progress="10" />
+        <SeekBar
+            android:id="@+id/seekBar1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
 
-    <SeekBar
-        android:id="@+id/seekBar3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="20"
-        android:progress="10" />
+        <SeekBar
+            android:id="@+id/seekBar2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
 
-    <SeekBar
-        android:id="@+id/seekBar4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="20"
-        android:progress="10" />
+        <SeekBar
+            android:id="@+id/seekBar3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
 
-    <SeekBar
-        android:id="@+id/seekBar5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="20"
-        android:progress="10" />
+        <SeekBar
+            android:id="@+id/seekBar4"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
 
-    <SeekBar
-        android:id="@+id/seekBar6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="20"
-        android:progress="10" />
+        <SeekBar
+            android:id="@+id/seekBar5"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
 
-    <SeekBar
-        android:id="@+id/seekBar7"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:max="20"
-        android:progress="10" />
+        <SeekBar
+            android:id="@+id/seekBar6"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
+
+        <SeekBar
+            android:id="@+id/seekBar7"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
+
+        <SeekBar
+            android:id="@+id/seekBar8"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
+
+        <SeekBar
+            android:id="@+id/seekBar9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
+
+        <SeekBar
+            android:id="@+id/seekBar10"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:max="20"
+            android:visibility="invisible"
+            android:progress="10" />
 
     </LinearLayout>
 

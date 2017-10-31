@@ -4,7 +4,7 @@ android {
     compileSdkVersion 26
     buildToolsVersion "26.0.0"
     defaultConfig {
-        applicationId "com.jshipster.app.eq"
+        applicationId "com.example.app.eq"
         minSdkVersion 22
         targetSdkVersion 26
         versionCode 1

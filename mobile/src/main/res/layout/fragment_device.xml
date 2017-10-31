@@ -10,10 +10,21 @@
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
 
+    <ProgressBar
+        android:id="@+id/pbr_scanning"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible"
+        android:indeterminateDuration="500"
+        android:layout_toEndOf="@+id/btn_scan" />
+
     <ListView
         android:id="@+id/ltv_devices"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_scan"
         android:layout_alignParentStart="true" />
+
 </RelativeLayout>
